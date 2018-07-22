@@ -32,7 +32,7 @@ RUN apk -U update && \
     sed -i "s/memory_limit = 128M/memory_limit = \"1024M\"/g" /etc/php7/php.ini
 
 # Configure Spotweb
-COPY conf/spotweb /app
+COPY conf/spotweb/dbsettings.inc.php /app/dbsettings.inc.php
 
 # Copy root filesystem
 COPY rootfs /

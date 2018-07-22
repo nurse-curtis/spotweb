@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+# permissions
+chown -R abc:abc \
+	/app
+
+mkdir -p /run/php
+
+chown -R abc:abc /run/php

@@ -27,7 +27,8 @@ RUN apk -U update && \
     && \
     git clone --branch develop --depth 1 https://github.com/spotweb/spotweb.git /app && \
     sed -i "s/date.timezone = UTC/date.timezone = \"America\/Edmonton\"/g" /etc/php7/php.ini && \
-    sed -i "s/memory_limit = 128M/memory_limit = \"1024M\"/g" /etc/php7/php.ini
+    sed -i "s/memory_limit = 128M/memory_limit = \"1024M\"/g" /etc/php7/php.ini && \
+    sed -i "s/max_execution_time = 30/max_execution_time = \"120\"/g" /etc/php7/php.ini
 
 # Configure Spotweb
 COPY ./conf/spotweb /app

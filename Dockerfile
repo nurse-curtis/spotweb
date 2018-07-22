@@ -36,5 +36,6 @@ COPY conf/spotweb /app
 
 # Copy root filesystem
 COPY rootfs /
+RUN mkdir -p /var/run/php
 
 EXPOSE 80

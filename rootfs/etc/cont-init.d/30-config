@@ -4,5 +4,4 @@
 chown -R abc:abc \
 	/app
 
-mkdir -p /var/run/php
 chown abc:abc /var/run/php

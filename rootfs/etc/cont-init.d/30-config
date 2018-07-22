@@ -42,7 +42,7 @@ if [[ -n "$CRON_RETRIEVE" || -n "$CRON_CACHE_CHECK" ]]; then
         echo "$CRON_RETRIEVE s6-setuidgid abc php /app/retrieve.php >/dev/stdout 2>&1" >> /var/spool/cron/crontabs/root
 	fi
 	if [[ -n "$CRON_CACHE_CHECK" ]]; then
-        echo "$CRON_CACHE_CHECK s6-setuidgid abc php /app/bin/check-cache.php >/dev/stdout 2>&1" >> /etc/crontab
+        echo "$CRON_CACHE_CHECK s6-setuidgid abc php /app/bin/check-cache.php >/dev/stdout 2>&1" >> /var/spool/cron/crontabs/root
 	fi
 	rm /etc/periodic/hourly/spotweb
 fi

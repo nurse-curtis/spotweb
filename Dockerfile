@@ -1,5 +1,28 @@
 FROM alpine:3.7
 MAINTAINER Nurse Curtis <curtis@crabdance.ca>
+# root filesystem
+COPY rootfs /
+
+# base image packages
+RUN apk -U update && \
+    apk -U upgrade && \
+    apk -U add --no-cache \
+        bash \
+        coreutils \
+        ca-certificates \
+        shadow \
+        curl
+
+# s6 overlay
+RUN curl -L https://github.com/just-containers/s6-overlay/releases/download/v1.21.4.0/s6-overlay-amd64.tar.gz \
+    | tar -xzC /
+
+# create default user / group and folders
+RUN groupadd -g 1000 abc && \
+    useradd -u 1000 -g abc -d /app -s /bin/false abc && \
+    mkdir -p \
+	    /app \
+	    /config
 
 RUN apk -U update && \
     apk -U upgrade && \
